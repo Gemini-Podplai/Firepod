@@ -1,0 +1,40 @@
+[vite] connecting...
+[vite] connected.
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Auth state: 
+Object {user: {…}, isAuthenticated: true}
+Google API key is missing in the environment. Check your environment configuration.
+Error sending message: 
+Error {}
+
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/code", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/settings", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/code", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/settings", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Rendering protected route with auth: 
+Object {isLoggedInContext: false, isLoggedInDirect: true, finalDecision: true}
+Protected route check: 
+Object {isAuthenticated: false, user: null, location: "/", storedUser: "{"name":"Google User","email":"googleuser@example.com"}"}
+Google API key is missing in the environment. Check your environment configuration.
+Error sending message: 
+Error {}
+

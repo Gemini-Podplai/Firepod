@@ -1,0 +1,113 @@
+.model-selector-container {
+  position: relative;
+  z-index: 100;
+}
+
+.model-selector-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #111827;
+  cursor: pointer;
+  min-width: 120px;
+  transition: all 0.2s ease;
+}
+
+.model-selector-button:hover {
+  background-color: #e5e7eb;
+}
+
+.model-dropdown-arrow {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.model-dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.model-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.model-option {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.model-option:hover {
+  background-color: #f9fafb;
+}
+
+.model-option.selected {
+  background-color: #f3f4f6;
+}
+
+.model-option-content {
+  flex: 1;
+}
+
+.model-option-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.model-option-provider {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.model-option-description {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.model-option-check {
+  stroke: #2563eb;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.model-tooltip {
+  position: fixed;
+  background-color: #1f2937;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  max-width: 300px;
+  line-height: 1.4;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

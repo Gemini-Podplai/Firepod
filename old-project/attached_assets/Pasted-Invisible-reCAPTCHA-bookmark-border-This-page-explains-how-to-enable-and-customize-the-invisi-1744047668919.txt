@@ -1,0 +1,70 @@
+Invisible reCAPTCHA 
+
+bookmark_border
+
+This page explains how to enable and customize the invisible reCAPTCHA on your webpage.
+
+To invoke the invisible reCAPTCHA, you can either:
+
+Automatically bind the challenge to a button or
+Programmatically bind the challenge to a button or
+Programmatically invoke the challenge
+See Configurations to learn how to customize the invisible reCAPTCHA. For example, you may want to specify the language or badge location.
+
+See Verifying the user's response to check if the user successfully solved the CAPTCHA.
+
+Automatically bind the challenge to a button
+The easiest method for using the invisible reCAPTCHA widget on your page is to include the necessary JavaScript resource and add a few attributes to your html button. The necessary attributes are a class name 'g-recaptcha', your site key in the data-sitekey attribute, and the name of a JavaScript callback to handle completion of the captcha in the data-callback attribute.
+
+
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("demo-form").submit();
+       }
+     </script>
+  </head>
+  <body>
+    <form id="demo-form" action="?" method="POST">
+      <button class="g-recaptcha" data-sitekey="your_site_key" data-callback="onSubmit">Submit</button>
+      <br/>
+    </form>
+  </body>
+</html>
+The script must be loaded using the HTTPS protocol and can be included from any point on the page without restriction.
+
+Programmatically bind the challenge to a button or invoke the challenge.
+Deferring the binding can be achieved by specifying your onload callback function and adding parameters to the JavaScript resource. This works the same as the normal reCAPTCHA challenge.
+
+Programmatically invoke the challenge.
+Invoking the reCAPTCHA verification programmatically can be achieved by rendering the challenge in a div with an attribute data-size="invisible" and programmatically calling execute.
+
+Create a div with data-size="invisible".
+
+
+<div class="g-recaptcha"
+      data-sitekey="_your_site_key_"
+      data-callback="onSubmit"
+      data-size="invisible">
+</div>
+Call grecaptcha.execute from a javascript method.
+
+
+grecaptcha.execute();
+When your callback is executed, you can call the grecaptcha.render method from the JavaScript API.
+
+Your onload callback function must be defined before the reCAPTCHA API loads. To ensure there are no race conditions:
+order your scripts with the callback first, and then reCAPTCHA
+use the `async` and `defer` parameters in the `script` tags
+Configuration
+JavaScript resource (api.js) parameters
+Parameter	Value	Description
+onload		Optional. The name of your callback function to be executed once all the dependencies have loaded.
+render	explicit
+onload	Optional. Whether to render the widget explicitly. Defaults to onload, which will render the widget in the first g-recaptcha tag it finds.
+hl	See language codes	Optional. Forces the widget to render in a specific language. Auto-detects the user's language if unspecified.
+g-recaptcha tag attributes and grecaptcha.render parameters
+g-recaptcha tag attribute	grecaptcha.render parameter	Value	Default	Descrip

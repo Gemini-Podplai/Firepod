@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podplai Studio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .api-test {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    pre {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Podplai Studio API Tester</h1>
+    
+    <div class="api-test">
+      <h2>Health Check</h2>
+      <button id="health-btn">Test Health API</button>
+      <pre id="health-result">Results will appear here...</pre>
+    </div>
+    
+    <div class="api-test">
+      <h2>Chat API</h2>
+      <textarea id="chat-input" rows="4" style="width: 100%;" placeholder="Type a message to send to the AI..."></textarea>
+      <button id="chat-btn">Send Message</button>
+      <pre id="chat-result">Results will appear here...</pre>
+    </div>
+  </div>
+
+  <script>
+    // Health Check API test
+    document.getElementById('health-btn').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/api/health');
+        const data = await response.json();
+        document.getElementById('health-result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('health-result').textContent = `Error: ${error.message}`;
+      }
+    });
+
+    // Chat API test
+    document.getElementById('chat-btn').addEventListener('click', async () => {
+      const input = document.getElementById('chat-input').value;
+      if (!input.trim()) return;
+      
+      const resultElement = document.getElementById('chat-result');
+      resultElement.textContent = 'Sending request...';
+      
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            messages: [
+              { role: 'user', content: input }
+            ]
+          })
+        });
+        
+        const data = await response.json();
+        resultElement.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        resultElement.textContent = `Error: ${error.message}`;
+      }
+    });
+  </script>
+</body>
+</html>

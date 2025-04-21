@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podplay AI Studio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #1a1a1a;
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+    .sidebar, .right-sidebar {
+      width: 250px;
+      background: #252526;
+      padding: 20px;
+      border-right: 1px solid #333;
+      overflow-y: auto;
+    }
+    .right-sidebar {
+      border-left: 1px solid #333;
+      border-right: none;
+    }
+    .sidebar h2, .right-sidebar h2 {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar button, .right-sidebar button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar button:hover, .right-sidebar button:hover {
+      background: #0056b3;
+    }
+    .sidebar .prompts div, .right-sidebar .prompts div {
+      padding: 8px;
+      background: #333;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar .prompts div:hover, .right-sidebar .prompts div:hover {
+      background: #444;
+    }
+    .sidebar .prompts div.active {
+      background: #007bff;
+    }
+    .chat-history, .prompts {
+      margin-top: 20px;
+    }
+    .chat-history h3, .prompts h3 {
+      font-size: 1em;
+      color: #888;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .chat-history div {
+      padding: 8px;
+      background: #333;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-history div:hover {
+      background: #444;
+    }
+    .settings {
+      margin-top: 20px;
+    }
+    .settings div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .settings label {
+      font-size: 0.9em;
+      color: #e0e0e0;
+    }
+    .settings input[type="checkbox"] {
+      accent-color: #007bff;
+    }
+    .api-keys {
+      margin-top: 20px;
+    }
+    .api-keys div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .api-keys span {
+      font-size: 0.9em;
+      color: #e0e0e0;
+    }
+    .api-keys span.connected {
+      color: #00ff00;
+    }
+    .api-keys span.not-connected {
+      color: #ff0000;
+    }
+    .status {
+      margin-top: 20px;
+    }
+    .status div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .status span {
+      font-size: 0.9em;
+      color: #e0e0e0;
+    }
+    .status span.model {
+      background: #007bff;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .status span.connected {
+      color: #00ff00;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .chat-panel {
+      flex: 1;
+      padding: 20px;
+      background: #1e1e1e;
+      overflow-y: auto;
+    }
+    .chat-panel h2 {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    #chatMessages {
+      height: calc(100vh - 150px);
+      overflow-y: auto;
+      padding: 10px;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 6px;
+      max-width: 80%;
+    }
+    .message.user {
+      background: #007bff;
+      align-self: flex-end;
+      margin-left: auto;
+      color: white;
+    }
+    .message.ai {
+      background: #333;
+      margin-right: auto;
+      color: #e0e0e0;
+    }
+    .message.ai.gemini::before {
+      content: "Gemini: ";
+      font-weight: bold;
+      color: #00ff00;
+    }
+    .message.ai.claude::before {
+      content: "Claude: ";
+      font-weight: bold;
+      color: #ff00ff;
+    }
+    .chat-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      align-items: center;
+    }
+    #chatInput {
+      flex: 1;
+      padding: 10px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 6px;
+      color: #e0e0e0;
+    }
+    #chatInput:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+    .chat-input .icon {
+      cursor: pointer;
+      color: #888;
+    }
+    .chat-input .icon:hover {
+      color: #e0e0e0;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left Sidebar -->
+  <div class="sidebar">
+    <h2><span class="icon">🎮</span> dPlay Studio</h2>
+    <div class="prompts">
+      <div class="active"><span class="icon">💬</span> Chat</div>
+      <div><span class="icon">📡</span> Stream</div>
+      <div><span class="icon">🧩</span> Starter Apps</div>
+      <div><span class="icon">⏳</span> History</div>
+    </div>
+    <div class="chat-history">
+      <h3>Recent Sessions</h3>
+      <div>Chat Prompt</div>
+      <div>Image Generation</div>
+      <div>Code Assistant</div>
+      <div>Data Analysis Helper</div>
+    </div>
+    <div class="status">
+      <div>
+        <span>Active Model:</span>
+        <span class="model">Gemini Pro</span>
+      </div>
+      <div>
+        <span>API Status:</span>
+        <span class="connected">Connected</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Chat Panel -->
+    <div class="chat-panel">
+      <h2>Chat Prompt</h2>
+      <div id="chatMessages">
+        <div class="message user">Explain quantum computing in simple terms</div>
+        <div class="message ai">Certainly! Quantum computing is a new type of computing that relies on the principles of quantum physics...</div>
+      </div>
+      <div class="chat-input">
+        <input id="chatInput" type="text" placeholder="Enter your chat prompt...">
+        <span class="icon">😊</span>
+        <span class="icon">📎</span>
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="right-sidebar">
+    <h2>Get started with AI Studio</h2>
+    <p>Ask a question or upload images, files, or audio to interact with multiple AI models</p>
+    <div class="prompts">
+      <h3>Recent Sessions</h3>
+      <div><span class="icon">💬</span> Chat Prompt</div>
+      <div><span class="icon">🖼️</span> Image Generation</div>
+      <div><span class="icon">💻</span> Code Sandbox</div>
+      <div><span class="icon">📊</span> Data Analysis Helper</div>
+    </div>
+    <div class="settings">
+      <h3>Settings</h3>
+      <div>
+        <label>Structured output</label>
+        <input type="checkbox" checked>
+      </div>
+      <div>
+        <label>Func calling</label>
+        <input type="checkbox">
+      </div>
+      <div>
+        <label>Advanced Grounding Google Search</label>
+        <input type="checkbox">
+      </div>
+    </div>
+    <div class="api-keys">
+      <h3>API Keys</h3>
+      <div>
+        <span>Gemini API Key</span>
+        <span class="connected">Connected</span>
+      </div>
+      <div>
+        <span>Vertex AI Key</span>
+        <span class="not-connected">Not set</span>
+      </div>
+      <div>
+        <span>Perplexity API Key</span>
+        <span class="not-connected">Not set</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const userId = "testUserId"; // Replace with actual user ID (e.g., from authentication)
+    const backendUrl = "http://localhost:3001"; // Adjust to match your backend port
+    let messageCount = 0; // Track the number of messages sent to alternate between Gemini and Claude
+
+    // Load chat history on page load
+    window.onload = async () => {
+      await loadChatHistory();
+    };
+
+    // Load chat history from the backend
+    async function loadChatHistory() {
+      try {
+        const response = await fetch(`${backendUrl}/api/roo/messages/${userId}`);
+        const data = await response.json();
+        const messages = data.messages || [];
+        const chatMessages = document.getElementById("chatMessages");
+        chatMessages.innerHTML = "";
+        messages.forEach(msg => {
+          const messageElement = document.createElement("div");
+          messageElement.className = `message ${msg.role}${msg.model ? ` ${msg.model}` : ''}`;
+          messageElement.textContent = msg.message;
+          chatMessages.appendChild(messageElement);
+        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Populate sidebar chat history
+        const chatHistory = document.querySelector(".chat-history");
+        const historyItems = [];
+        messages.forEach(msg => {
+          if (msg.role === "user" && !historyItems.includes(msg.message)) {
+            historyItems.push(msg.message);
+            const historyItem = document.createElement("div");
+            historyItem.textContent = msg.message.substring(0, 30) + "...";
+            historyItem.onclick = () => {
+              chatMessages.innerHTML = "";
+              messages.forEach(m => {
+                if (m.message.startsWith(msg.message) || m.message.includes(msg.message)) {
+                  const messageElement = document.createElement("div");
+                  messageElement.className = `message ${m.role}${m.model ? ` ${m.model}` : ''}`;
+                  messageElement.textContent = m.message;
+                  chatMessages.appendChild(messageElement);
+                }
+              });
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+            };
+            chatHistory.appendChild(historyItem);
+          }
+        });
+      } catch (error) {
+        console.error("Error loading chat history:", error);
+      }
+    }
+
+    // Start a new chat by clearing the chat messages
+    function startNewChat() {
+      document.getElementById("chatMessages").innerHTML = "";
+      document.getElementById("chatInput").value = "";
+      messageCount = 0; // Reset message count for alternating APIs
+      // Note: We could add a backend call to clear history for this user if needed
+    }
+
+    // Send a message to the backend and get a response
+    async function sendMessage() {
+      const chatInput = document.getElementById("chatInput");
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      // Add user message to chat
+      const chatMessages = document.getElementById("chatMessages");
+      const userMessageElement = document.createElement("div");
+      userMessageElement.className = "message user";
+      userMessageElement.textContent = message;
+      chatMessages.appendChild(userMessageElement);
+
+      // Save user message to Firebase
+      await fetch(`${backendUrl}/api/roo/write-message`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, message, role: "user" })
+      });
+
+      // Alternate between Gemini and Claude based on message count
+      const useGemini = messageCount % 2 === 0;
+      const endpoint = useGemini ? "gemini-completion" : "claude-completion";
+      const model = useGemini ? "gemini" : "claude";
+
+      // Call the backend to get a response from the AI
+      try {
+        const response = await fetch(`${backendUrl}/api/roo/${endpoint}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: message })
+        });
+        const data = await response.json();
+        const aiResponse = data.text || "Sorry, I couldn't generate a response.";
+
+        // Add AI response to chat
+        const aiMessageElement = document.createElement("div");
+        aiMessageElement.className = `message ai ${model}`;
+        aiMessageElement.textContent = aiResponse;
+        chatMessages.appendChild(aiMessageElement);
+
+        // Save AI response to Firebase
+        await fetch(`${backendUrl}/api/roo/write-message`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, message: aiResponse, role: "assistant", model })
+        });
+      } catch (error) {
+        console.error("Error getting AI response:", error);
+        const aiMessageElement = document.createElement("div");
+        aiMessageElement.className = `message ai ${model}`;
+        aiMessageElement.textContent = "Error: " + error.message;
+        chatMessages.appendChild(aiMessageElement);
+      }
+
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      chatInput.value = "";
+      messageCount++; // Increment message count for alternating APIs
+    }
+  </script>
+</body>
+</html>

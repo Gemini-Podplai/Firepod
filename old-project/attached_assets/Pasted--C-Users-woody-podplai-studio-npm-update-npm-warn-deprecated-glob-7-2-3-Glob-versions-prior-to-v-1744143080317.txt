@@ -1,0 +1,580 @@
+ C:\Users\woody\podplai-studio> npm update
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 67 packages, removed 177 packages, changed 86 packages, and audited 
+1131 packages in 1m
+
+235 packages are looking for funding
+  run `npm fund` for details
+
+18 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Users\woody\podplai-studio> npm audit fix
+
+up to date, audited 1131 packages in 15s
+
+235 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99fix available via `npm audit fix --force`
+Will install drizzle-kit@0.19.1, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+node_modules/drizzle-kit/node_modules/esbuild
+node_modules/vite/node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.9.1 - 0.9.54 || >=0.12.9
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      Depends on vulnerable versions of esbuild
+      node_modules/drizzle-kit
+  vite  0.11.0 - 6.1.4
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+
+prismjs  <1.30.0
+Severity: moderate
+PrismJS DOM Clobbering vulnerability - https://github.com/advisories/GHSA-x7hr-w5r2-h6wg
+fix available via `npm audit fix --force`
+Will install react-syntax-highlighter@5.8.0, which is a breaking change   
+node_modules/refractor/node_modules/prismjs
+  refractor  <=4.6.0
+  Depends on vulnerable versions of prismjs
+  node_modules/refractor
+    react-syntax-highlighter  >=6.0.0
+    Depends on vulnerable versions of refractor
+    node_modules/react-syntax-highlighter
+
+undici  6.0.0 - 6.21.0
+Severity: moderate
+Use of Insufficiently Random Values in undici - https://github.com/advisories/GHSA-c76h-2ccp-4975
+fix available via `npm audit fix`
+node_modules/undici
+  @firebase/auth  1.7.7-20240813205648 - 1.7.7-canary.1ff9661af || 1.7.8-20240827161511 - 1.7.9
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat/node_modules/@firebase/auth
+  node_modules/firebase/node_modules/@firebase/auth
+    firebase  0.900.22 || 7.9.1-0 - 7.9.1-canary.0396117e || 8.10.0-20217172214 - 8.10.0-canary.f40c0db53 || 9.0.0-20217250818 - 9.0.0-canary.d0d3acb10 || 9.0.1-2021727231341 - 9.0.1-canary.e039e1472 || 9.0.2-2021891633 - 
+9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.13.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716151
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716151
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716151
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716151
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+  @firebase/firestore  4.7.0-20240813205648 - 4.7.0-canary.fa0ed08fb || 4.7.1-20240827161511 - 4
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716151
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+  @firebase/firestore  4.7.0-20240813205648 - 4.7.0-canary.fa0ed08fb || 4.7.1-20240827161511 - 4
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/firestore
+    @firebase/firestore-compat  <=0.0.900-exp.520ca39d0 || 0.3.30-20240424141009 - 0.3.30-datacoy.fa0ed08fb || 0.3.36-20240827161511 - 0.3.38
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/firestore
+    @firebase/firestore-compat  <=0.0.900-exp.520ca39d0 || 0.3.30-20240424141009 - 0.3.30-datacoy.fa0ed08fb || 0.3.36-20240827161511 - 0.3.38
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+  Depends on vulnerable versions of undici
+  Depends on vulnerable versions of undici
+    @firebase/functions-compat  0.3.13-20240827161511 - 0.3.14
+    Depends on vulnerable versions of @firebase/functions
+    node_modules/@firebase/functions-compat
+  @firebase/storage  0.13.0-20240814182916 - 0.13.0-canary.fa0ed08fb || 0.13.1-20240827161511 - 
+0.13.2
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/storage
+    @firebase/storage-compat  <=0.0.900-exp.520ca39d0 || 0.1.4-202192711727 - 0.1.4-canary.f27fe4304 || 0.3.10-20240814182916 - 0.3.10-canary.fa0ed08fb || 0.3.11-20240827161511 - 0.3.12       
+    Depends on vulnerable versions of @firebase/storage
+    node_modules/@firebase/storage-compat
+
+18 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+PS C:\Users\woody\podplai-studio> npm audit fix
+
+added 13 packages, changed 2 packages, and audited 1144 packages in 45s
+
+236 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install drizzle-kit@0.19.1, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+node_modules/drizzle-kit/node_modules/esbuild
+node_modules/vite/node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.9.1 - 0.9.54 || >=0.12.9
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      Depends on vulnerable versions of esbuild
+      node_modules/drizzle-kit
+  vite  0.11.0 - 6.1.4
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+
+next  9.5.5 - 14.2.14
+Severity: high
+Next.js Server-Side Request Forgery in Server Actions - https://github.com/advisories/GHSA-fr5h-rqp8-mj6g
+Denial of Service condition in Next.js image optimization - https://github.com/advisories/GHSA-g77x-44xx-532m
+Next.js authorization bypass vulnerability - https://github.com/advisories/GHSA-7gfc-8cq8-jh5f  
+fix available via `npm audit fix --force`
+Will install next@15.2.4, which is a breaking change
+node_modules/next
+
+prismjs  <1.30.0
+Severity: moderate
+PrismJS DOM Clobbering vulnerability - https://github.com/advisories/GHSA-x7hr-w5r2-h6wg        
+fix available via `npm audit fix --force`
+Will install react-syntax-highlighter@5.8.0, which is a breaking change
+node_modules/refractor/node_modules/prismjs
+  refractor  <=4.6.0
+  Depends on vulnerable versions of prismjs
+  node_modules/refractor
+    react-syntax-highlighter  >=6.0.0
+    Depends on vulnerable versions of refractor
+    node_modules/react-syntax-highlighter
+
+undici  6.0.0 - 6.21.0
+Severity: moderate
+Use of Insufficiently Random Values in undici - https://github.com/advisories/GHSA-c76h-2ccp-4975
+fix available via `npm audit fix`
+node_modules/undici
+  @firebase/auth  1.7.7-20240813205648 - 1.7.7-canary.1ff9661af || 1.7.8-20240827161511 - 1.7.9 
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat/node_modules/@firebase/auth
+  node_modules/firebase/node_modules/@firebase/auth
+    firebase  0.900.22 || 7.9.1-0 - 7.9.1-canary.0396117e || 8.10.0-20217172214 - 8.10.0-canary.f40c0db53 || 9.0.0-20217250818 - 9.0.0-canary.d0d3acb10 || 9.0.1-2021727231341 - 9.0.1-canary.e039e1472 || 9.0.2-2021891633 - 9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.13.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161511 - 0.5.14
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+  @firebase/firestore  4.7.0-20240813205648 - 4.7.0-canary.fa0ed08fb || 4.7.1-20240827161511 - 4.7.3
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/firestore
+    @firebase/firestore-compat  <=0.0.900-exp.520ca39d0 || 0.3.30-20240424141009 - 0.3.30-dataconnect-preview.f2ddc3d7b || 0.3.35-20240813205648 - 0.3.35-canary.fa0ed08fb || 0.3.36-20240827161511 - 0.3.38
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/functions
+    @firebase/functions-compat  0.3.13-20240827161511 - 0.3.14
+    Depends on vulnerable versions of @firebase/functions
+    node_modules/@firebase/functions-compat
+  @firebase/storage  0.13.0-20240814182916 - 0.13.0-canary.fa0ed08fb || 0.13.1-20240827161511 - 
+0.13.2
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/storage
+    @firebase/storage-compat  <=0.0.900-exp.520ca39d0 || 0.1.4-202192711727 - 0.1.4-canary.f27fe4304 || 0.3.10-20240814182916 - 0.3.10-canary.fa0ed08fb || 0.3.11-20240827161511 - 0.3.12       
+    Depends on vulnerable versions of @firebase/storage
+    node_modules/@firebase/storage-compat
+
+19 vulnerabilities (18 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+PS C:\Users\woody\podplai-studio> npm audit
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install vite@6.2.5, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+node_modules/drizzle-kit/node_modules/esbuild
+node_modules/vite/node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.9.1 - 0.9.54 || >=0.12.9
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      Depends on vulnerable versions of esbuild
+      node_modules/drizzle-kit
+  vite  0.11.0 - 6.1.4
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+
+next  9.5.5 - 14.2.14
+Severity: high
+Next.js Server-Side Request Forgery in Server Actions - https://github.com/advisories/GHSA-fr5h-rqp8-mj6g
+Denial of Service condition in Next.js image optimization - https://github.com/advisories/GHSA-g77x-44xx-532m
+Next.js authorization bypass vulnerability - https://github.com/advisories/GHSA-7gfc-8cq8-jh5f  
+fix available via `npm audit fix --force`
+Will install next@15.2.4, which is a breaking change
+node_modules/next
+
+prismjs  <1.30.0
+Severity: moderate
+PrismJS DOM Clobbering vulnerability - https://github.com/advisories/GHSA-x7hr-w5r2-h6wg        
+fix available via `npm audit fix --force`
+Will install react-syntax-highlighter@5.8.0, which is a breaking change
+node_modules/refractor/node_modules/prismjs
+  refractor  <=4.6.0
+  Depends on vulnerable versions of prismjs
+  node_modules/refractor
+    react-syntax-highlighter  >=6.0.0
+    Depends on vulnerable versions of refractor
+    node_modules/react-syntax-highlighter
+
+undici  6.0.0 - 6.21.0
+Severity: moderate
+Use of Insufficiently Random Values in undici - https://github.com/advisories/GHSA-c76h-2ccp-4975
+fix available via `npm audit fix`
+node_modules/undici
+  @firebase/auth  1.7.7-20240813205648 - 1.7.7-canary.1ff9661af || 1.7.8-20240827161511 - 1.7.9 
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat/node_modules/@firebase/auth
+  node_modules/firebase/node_modules/@firebase/auth
+    firebase  0.900.22 || 7.9.1-0 - 7.9.1-canary.0396117e || 8.10.0-20217172214 - 8.10.0-canary.f40c0db53 || 9.0.0-20217250818 - 9.0.0-canary.d0d3acb10 || 9.0.1-2021727231341 - 9.0.1-canary.e039e1472 || 9.0.2-2021891633 - 9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.13.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161511 - 0.5.14
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+  @firebase/firestore  4.7.0-20240813205648 - 4.7.0-canary.fa0ed08fb || 4.7.1-20240827161511 - 4.7.3
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/firestore
+    @firebase/firestore-compat  <=0.0.900-exp.520ca39d0 || 0.3.30-20240424141009 - 0.3.30-dataconnect-preview.f2ddc3d7b || 0.3.35-20240813205648 - 0.3.35-canary.fa0ed08fb || 0.3.36-20240827161511 - 0.3.38
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/functions
+    @firebase/functions-compat  0.3.13-20240827161511 - 0.3.14
+    Depends on vulnerable versions of @firebase/functions
+    node_modules/@firebase/functions-compat
+  @firebase/storage  0.13.0-20240814182916 - 0.13.0-canary.fa0ed08fb || 0.13.1-20240827161511 - 
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/storage
+    @firebase/storage-compat  <=0.0.900-exp.520ca39d0 || 0.1.4-202192711727 - 0.1.4-canary.f27fe11-20240827161511 - 0.3.12
+    Depends on vulnerable versions of @firebase/storage
+    node_modules/@firebase/storage-compat
+
+19 vulnerabilities (18 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+PS C:\Users\woody\podplai-studio> npm audit fix
+
+up to date, audited 1144 packages in 16s
+
+236 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response
+fix available via `npm audit fix --force`
+Will install drizzle-kit@0.19.1, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+node_modules/drizzle-kit/node_modules/esbuild
+node_modules/vite/node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.9.1 - 0.9.54 || >=0.12.9
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      Depends on vulnerable versions of esbuild
+      node_modules/drizzle-kit
+  vite  0.11.0 - 6.1.4
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+
+next  9.5.5 - 14.2.14
+Severity: high
+Next.js Server-Side Request Forgery in Server Actions - https://github.com/advisories/GHSA-fr5h-
+Denial of Service condition in Next.js image optimization - https://github.com/advisories/GHSA-g
+Next.js authorization bypass vulnerability - https://github.com/advisories/GHSA-7gfc-8cq8-jh5f
+fix available via `npm audit fix --force`
+Will install next@15.2.4, which is a breaking change
+node_modules/next
+
+prismjs  <1.30.0
+Severity: moderate
+PrismJS DOM Clobbering vulnerability - https://github.com/advisories/GHSA-x7hr-w5r2-h6wg
+fix available via `npm audit fix --force`
+Will install react-syntax-highlighter@5.8.0, which is a breaking change
+node_modules/refractor/node_modules/prismjs
+  refractor  <=4.6.0
+  Depends on vulnerable versions of prismjs
+  node_modules/refractor
+    react-syntax-highlighter  >=6.0.0
+    Depends on vulnerable versions of refractor
+    node_modules/react-syntax-highlighter
+
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat/node_modules/@firebase/auth
+  node_modules/firebase/node_modules/@firebase/auth                                           97
+    firebase  0.900.22 || 7.9.1-0 - 7.9.1-canary.0396117e || 8.10.0-20217172214 - 8.10.0-canary.f40c0db53 || 9.0.0-20217250818 - 9.0.0-canary.d0d3acb10 || 9.0.1-2021727231341 - 9.0.1-canary.e039e1472 || 9.0.2-2021891633 - 9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.9f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.13.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth                                          y.
+    Depends on vulnerable versions of @firebase/auth-compat                                   -2
+    Depends on vulnerable versions of @firebase/firestore                                     | 
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161y.f40c0db53 || 9.0.0-20217250818 - 9.0.0-canary.d0d3acb10 || 9.0.1-2021727231341 - 9.0.1-canary.e039e1472 || 9.0.2-2021891633 - 9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.5113.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore                                      4
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat                              co
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161y.e039e1472 || 9.0.2-2021891633 - 9.0.2-canary.ff9baf70c || 9.0.3-202181503543 - 9.1.0-canary.f7d8324a1 || 9.1.1-2021830195733 - 9.1.1-canary.e70de6201 || 9.1.2-20219523556 - 9.1.2-canary.fc1d36497 || 9.22.1-20230524195328 || 10.12.2-20240523185724 - 10.12.2-canary.872e6f63e || 10.13.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat                                   - 
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions                                     fe
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-2024082716113.0-20240813205648 - 10.13.0-canary.fa0ed08fb || 10.13.1-20240827161511 - 10.14.1
+    Depends on vulnerable versions of @firebase/auth
+    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161    Depends on vulnerable versions of @firebase/auth-compat
+    Depends on vulnerable versions of @firebase/firestore
+    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161    Depends on vulnerable versions of @firebase/firestore-compat
+    Depends on vulnerable versions of @firebase/functions
+    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161    Depends on vulnerable versions of @firebase/functions-compat
+    Depends on vulnerable versions of @firebase/storage
+    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161    Depends on vulnerable versions of @firebase/storage-compat
+    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161    node_modules/firebase
+  @firebase/auth-compat  0.5.12-20240813205648 - 0.5.12-canary.fa0ed08fb || 0.5.13-20240827161511 - 0.5.14
+511 - 0.5.14
+  Depends on vulnerable versions of @firebase/auth
+  Depends on vulnerable versions of undici
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/auth-compat
+  @firebase/firestore  4.7.0-20240813205648 - 4.7.0-canary.fa0ed08fb || 4.7.1-20240827161511 - 4.7.3
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/firestore
+    @firebase/firestore-compat  <=0.0.900-exp.520ca39d0 || 0.3.30-20240424141009 - 0.3.30-dataconnect-preview.f2ddc3d7b || 0.3.35-20240813205648 - 0.3.35-canary.fa0ed08fb || 0.3.36-20240827161511 - 0.3.38
+    Depends on vulnerable versions of @firebase/firestore
+    node_modules/@firebase/firestore-compat
+  @firebase/functions  0.11.7-20240827161511 - 0.11.8
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/functions
+    @firebase/functions-compat  0.3.13-20240827161511 - 0.3.14
+    Depends on vulnerable versions of @firebase/functions
+    node_modules/@firebase/functions-compat
+  @firebase/storage  0.13.0-20240814182916 - 0.13.0-canary.fa0ed08fb || 0.13.1-20240827161511 
+- 0.13.2
+  Depends on vulnerable versions of undici
+  node_modules/@firebase/storage
+    @firebase/storage-compat  <=0.0.900-exp.520ca39d0 || 0.1.4-202192711727 - 0.1.4-canary.f27fe4304 || 0.3.10-20240814182916 - 0.3.10-canary.fa0ed08fb || 0.3.11-20240827161511 - 0.3.12   
+    Depends on vulnerable versions of @firebase/storage
+    node_modules/@firebase/storage-compat
+
+19 vulnerabilities (18 moderate, 1 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+PS C:\Users\woody\podplai-studio> npm install next@15.2.4
+
+added 6 packages, removed 2 packages, changed 5 packages, and audited 1148 packages in 33s    
+
+238 packages are looking for funding
+  run `npm fund` for details
+
+18 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Users\woody\podplai-studio> npm run dev
+
+> podplai-studio@1.0.0 dev
+> nodemon server.js
+
+[nodemon] 3.1.9
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node server.js`
+node:internal/modules/run_main:122
+    triggerUncaughtException(
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\woody\podplai-studio\scripts\validateEnv' imported from C:\Users\woody\podplai-studio\server.js
+Did you mean to import "./scripts/validateEnv.js"?
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:860:10)
+    at defaultResolve (node:internal/modules/esm/resolve:984:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)
+
+Did you mean one of these?
+  npm install # Install a package
+  npm uninstall # Remove a package
+To see a list of supported npm commands, run:
+  npm help
+PS C:\Users\woody\podplai-studio> npm install
+
+up to date, audited 1148 packages in 8s
+
+238 packages are looking for funding
+  run `npm fund` for details
+
+18 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Users\woody\podplai-studio>
+
+
+
+
+
+
+
+
+

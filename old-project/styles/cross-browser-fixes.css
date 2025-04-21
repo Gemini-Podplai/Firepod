@@ -1,0 +1,113 @@
+/**
+ * Cross-browser compatibility CSS fixes
+ */
+
+/* Reset box-sizing for consistent layouts */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Fix for inconsistent default styles */
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+/* Normalize styling for HTML5 elements */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+  /* Fix for Firefox's different handling of sub-pixel rendering */
+  .pixel-perfect {
+    transform: translateZ(0);
+  }
+  
+  /* Fix for vertical alignment issues in Firefox */
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    padding-right: 1em;
+  }
+}
+
+/* Safari-specific fixes */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    /* Fix for Safari's handling of position:fixed elements */
+    .safari-fixed-position-fix {
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Fix for flexbox issues in Safari */
+    .safari-flex-fix {
+      flex-shrink: 0;
+    }
+  }
+}
+
+/* IE/Edge fixes */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* Fix for IE11 CSS grid issues */
+  .ie-grid-fix {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 1fr;
+  }
+  
+  /* Fix for IE11 flexbox issues */
+  .ie-flex-fix {
+    flex: 0 0 auto;
+  }
+}
+
+/* Use this class for elements that might have transparency issues in some browsers */
+.fix-transparency {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Fix for sticky positioning in Safari */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+/* Fix for inconsistent form element styling */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Fix for inconsistent image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Safari and Chrome input shadow fix */
+input, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Firefox focus ring fix */
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+/* Custom focus styles for accessibility */
+.focus-visible:focus {
+  outline: 2px solid #4d90fe;
+  outline-offset: 2px;
+}

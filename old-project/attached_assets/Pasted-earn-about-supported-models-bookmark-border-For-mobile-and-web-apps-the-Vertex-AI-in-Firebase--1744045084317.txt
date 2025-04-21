@@ -1,0 +1,377 @@
+earn about supported models 
+
+bookmark_border
+For mobile and web apps, the Vertex AI in Firebase SDKs let you interact with the supported Gemini models and Imagen 3 models directly from your app.
+
+Gemini models are considered multimodal because they're capable of processing and even generating multiple modalities, including text, code, PDFs, images, video, and audio. Imagen 3 models can be prompted with text to generate images.
+
+The following table is a brief overview of supported models for Vertex AI in Firebase and their latest stable model names. This table also lists preview and experimental models that are available for prototyping use cases.
+
+Model	Input	Output	Description
+Gemini models with stable versions
+Gemini 2.0 Flash
+gemini-2.0-flash-001	text, code, PDFs, images, video, audio	text, code, JSON
+(images & audio coming soon!)	Provides next generation features and speed for a diverse variety of tasks
+(multimodal generation coming soon!)
+Gemini 2.0 Flash‑Lite
+gemini-2.0-flash-lite-001	text, code, PDFs, images, video, audio	text, code, JSON	Provides cost effective and low latency performance; supports high throughput
+Gemini models with only preview and experimental versions (recommended for prototyping use cases only)
+Gemini 2.5 Pro
+gemini-2.5-pro-exp-03-25	text, code, PDFs, images, video, audio	text, code, JSON	Offers advanced reasoning, especially for multimodal understanding, coding, and world knowledge
+Gemini 2.0 Flash‑Thinking
+gemini-2.0-flash-thinking-exp-01-21	text, code, PDFs, images	text, code, JSON	Offers stronger reasoning capabilities and includes the thinking process in responses
+Imagen 3 models (when using with Vertex AI in Firebase)
+Imagen 3
+imagen-3.0-generate-002	text	images	Generates realistic, high-quality images from natural language text prompts
+Imagen 3 Fast
+imagen-3.0-fast-generate-001	text	images	Generates images for prototyping or low-latency use cases
+Does Vertex AI in Firebase support older models, like Gemini 1.5 and Gemini 1.0 models?
+All Gemini 1.5 models and Gemini 1.0 models will be discontinued soon. Update to a newer model to avoid service disruption.
+
+
+The remainder of this page provides detailed information about the models supported by Vertex AI in Firebase:
+
+Compare models:
+
+Supported input and output
+High-level comparison of the supported capabilities
+Specifications and limitations, for example max input tokens or max length of input video
+Description of how models are versioned, specifically their stable, auto-updated, and preview versions
+
+Lists of available model names to include in your code during initialization
+
+Lists of supported languages for the models
+
+At the bottom of this page, you can view detailed information about older models.
+
+
+
+Compare models
+Each model has different capabilities to support various use cases. Note that each of tables in this section describe each model when used with Vertex AI in Firebase. Each model might have additional capabilities that aren't available when using our SDKs.
+
+If you can't find the information you're looking for in the following sub-sections, you can find even more information about the Gemini models and Imagen 3 models in the Google Cloud documentation.
+
+Supported input and output
+These are the supported input and output types when using each model with Vertex AI in Firebase:
+
+Gemini
+2.5 Pro	Gemini
+2.0 Flash	Gemini
+2.0 Flash-
+Lite	Gemini
+2.0 Flash-
+Thinking	Imagen 3 /
+Imagen 3 Fast
+Input types
+Text					
+Code					
+Documents
+(PDFs or plain-text)					
+Images					
+Video					
+Audio					
+Audio (streaming)		coming soon!			
+Output types
+Text					
+Code					
+Structured output
+(like JSON)					
+Images		coming soon!			
+Audio		coming soon!			
+Audio (streaming)		coming soon!			
+To learn about supported file types, see Supported input files and requirements for the Vertex AI Gemini API.
+
+Supported capabilities and features
+These are the supported capabilities and features when using each model with Vertex AI in Firebase:
+
+Gemini
+2.5 Pro	Gemini
+2.0 Flash	Gemini
+2.0 Flash-
+Lite	Gemini
+2.0 Flash-
+Thinking	Imagen 3 /
+Imagen 3 Fast
+Generate text from text or multimodal inputs					
+Generate images
+(Imagen 3)		coming soon!			
+Generate audio		coming soon!			
+Generate structured output
+(like JSON)					
+Analyze documents
+(PDFs or plain-text)					
+Analyze images (vision)					
+Analyze video (vision)					
+Analyze audio					
+Multi-turn chat					
+Function calling (tools)					
+Count tokens and billable characters					
+System instructions					
+Multimodal Live API
+(bidirectional streaming)		coming soon!			
+Note: When using Vertex AI in Firebase, the following capabilities are not supported: context caching, Search as a tool, grounding with Google Search, code execution, fine tuning a model, embeddings generation, semantic retrieval, and some advanced features of Imagen models.
+
+Specifications and limitations
+These are the specifications and limitations when using each model with Vertex AI in Firebase:
+
+Property	Gemini
+2.5 Pro	Gemini
+2.0 Flash	Gemini
+2.0 Flash-
+Lite	Gemini
+2.0 Flash-
+Thinking	Imagen 3 /
+Imagen 3 Fast
+Context window *
+Total token limit
+(combined input+output)	2,097,152 tokens	1,048,576 tokens	1,048,576 tokens	1,048,576 tokens	480 tokens
+Output token limit *	64,000 tokens	8,192 tokens	8,192 tokens	8,192 tokens	---
+Knowledge cutoff date	January 2025	June 2024	June 2024	June 2024	---
+PDFs (per request)
+Max number
+of input PDF files **	3,000 files	3,000 files	3,000 files	3,000 files	---
+Max number
+of pages
+per input PDF file **	1,000 pages	1,000 pages	1,000 pages	1,000 pages	---
+Max size
+per input PDF file	50 MB	50 MB	50 MB	50 MB	---
+Images (per request)
+Max number
+of input images	3,000 images	3,000 images	3,000 images	3,000 images	---
+Max number
+of output images	---	coming soon!	---	---	4 images
+Max size
+per input base64-encoded image	7 MB	7 MB	7 MB	7 MB	---
+Video (per request)
+Max number
+of input video files	10 files	10 files	10 files	---	---
+Max length
+of all input video
+(frames only)	~60 minutes	~60 minutes	~60 minutes	---	---
+Max length
+of all input video
+(frames+audio)	~45 minutes	~45 minutes	~45 minutes	---	---
+Audio (per request)
+Max number
+of input audio files	1 file	1 file	1 file	---	---
+Max number
+of output audio files	---	coming soon!	---	---	---
+Max length
+of all input audio	~8.4 hours	~8.4 hours	~8.4 hours	---	---
+Max length
+of all output audio	---	coming soon!	---	---	---
+* For all Gemini models, a token is equivalent to about 4 characters, so 100 tokens are about 60-80 English words. For Gemini models, you can determine the total count of tokens in your requests using countTokens.
+
+** PDFs are treated as images, so a single page of a PDF is treated as one image. The number of pages allowed in a request is limited to the number of images the model can support.
+
+Find additional detailed information
+Quotas and pricing are different for each model. Pricing also depends on input and output.
+
+Learn about supported input file types, how to specify MIME type, and how to make sure that your input files and multimodal requests meet the requirements and follow best practices in Supported input files and requirements for the Vertex AI Gemini API.
+
+Important: For Vertex AI in Firebase SDKs, the maximum request size is 20 MB. You get an HTTP 413 error if a request is too large.
+
+If an input file's size will make the total request size exceed 20 MB, then you'll need to provide the file using a URL (for example, by using a Cloud Storage for Firebase URL). However, if a file is small, you can often pass it directly as inline data (note though, that a file provided as inline data is encoded to base64 in transit, which increases the size of the request).
+
+
+Model versioning and naming patterns
+Models are offered in stable, preview, and experimental versions. For convenience, aliases without explicit version values are supported.
+
+To find specific model names to use in your code, see the "available model names" section later on this page.
+
+Version type	Description	Model name pattern
+Stable	Stable versions are considered Generally Available.	
+Model names of stable versions are appended with a specific three-digit version number
+
+Example: gemini-2.0-flash-001
+Example: imagen-3.0-generate-002
+
+Auto-updated stable alias	Auto-updated stable aliases always point to the latest stable version of that model. If a new stable version is released, the auto-updated alias automatically starts pointing to that new stable version.	
+Model names of aliases have no appendage
+
+Example: gemini-2.0-flash
+
+Preview	Preview versions have new capabilities and are considered not stable.
+Preview versions always point to the latest preview version of that model. If a new preview version is released, any existing preview version automatically starts pointing to that new preview version.
+
+Model names of preview versions are appended with -preview along with the model's initial release date (-MMDD)
+
+Example: gemini-2.0-flash-lite-preview-02-05
+(released on February 5, 2025)
+
+Experimental	Experimental versions have new capabilities and are considered not stable and don't follow Google's standard model lifecycle plan and versioning scheme.
+Learn more about experimental models.
+
+Model names of experimental versions are appended with -exp along with the model's initial release date (-MMDD)
+
+Example: gemini-2.5-pro-exp-03-25
+(released on March 25, 2025)
+
+Learn more about the available model versions and their lifecycle (Gemini) or Imagen in the Google Cloud documentation.
+
+Important: For production use cases, we recommend using the explicit model name for the most recent stable version. Even though an auto-updated stable alias points to a stable version, the actual model version it points to will automatically change whenever a new stable version is released, which could mean unexpected behavior or responses.
+
+Preview and experimental versions are only recommended during prototyping.
+
+We also recommend using Firebase Remote Config so that you can dynamically change the model and version in your app without releasing a new version of your app.
+
+
+Available model names
+Model names are the explicit values that you include in your code during initialization of the model.
+
+You can use the publishers.models.list endpoint to list all available model names. Note that this returned list will include all models that Vertex AI supports, but Vertex AI in Firebase only supports the Gemini and Imagen models described on this page. Also note that auto-updated aliases (for example, gemini-2.0-flash) aren't listed because they're a convenience alias for the base model.
+
+Gemini model names
+For initialization examples for your language, see the getting started guide.
+
+Gemini 2.5 Pro model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+No stable versions available	---	---	---	---
+Auto-updated stable alias
+No auto-updated stable alias available	---	---	---	---
+Preview versions
+No preview versions available	---	---	---	---
+Experimental versions
+gemini-2.5-pro-exp-03-25	Experimental version of Gemini 2.5 Pro	Experimental	2025-03-25	To be determined
+Gemini 2.0 Pro model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+No stable versions available	---	---	---	---
+Auto-updated stable alias
+No auto-updated stable alias available	---	---	---	---
+Preview versions
+No preview versions available	---	---	---	---
+Experimental versions
+Replaced by gemini-2.5-pro-exp-03-25	Experimental version for Gemini Pro models	Experimental	2025-03-25	To be determined
+Gemini 2.0 Flash model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-2.0-flash-001	Latest stable version of Gemini 2.0 Flash	General Availability	2025-02-05	No earlier than
+2026-02-05
+Auto-updated stable alias
+gemini-2.0-flash	Points to the latest stable version of 2.0 Flash
+(currently gemini-2.0-flash-001)	General Availability	2025-02-10	---
+Preview versions
+No preview versions available	---	---	---	---
+Experimental versions
+No experimental versions available	---	---	---	---
+Gemini 2.0 Flash‑Lite model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-2.0-flash-lite-001	Latest stable version of Gemini 2.0 Flash‑Lite	General Availability	2025-02-25	No earlier than
+2026-02-25
+Auto-updated stable alias
+gemini-2.0-flash-lite	Points to the latest stable version of 2.0 Flash-Lite
+(currently gemini-2.0-flash-lite-001)	General Availability	2025-02-25	---
+Preview versions
+No preview versions available	---	---	---	---
+Experimental versions
+No experimental versions available	---	---	---	---
+Gemini 2.0 Flash‑Thinking model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+No stable versions available	---	---	---	---
+Auto-updated stable alias
+No auto-updated stable alias available	---	---	---	---
+Preview versions
+No preview versions available	---	---	---	---
+Experimental versions
+gemini-2.0-flash-thinking-exp-01-21	Experimental version of Gemini 2.0 Flash‑Thinking	Experimental	2025-01-21	To be determined
+Imagen model names
+For initialization examples for your language, see the generate images with Imagen guide.
+
+Right now, none of the Imagen 3 models have preview or experimental versions available.
+
+Imagen 3 model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+imagen-3.0-generate-002	Latest stable version of Imagen 3	General Availability	2025-01-23	No earlier than 2026-01-23
+imagen-3.0-generate-001	Initial stable version of Imagen 3	General Availability	2024-07-31	No earlier than 2025-07-31
+Imagen 3 Fast model names
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+imagen-3.0-fast-generate-001	Initial stable version of Imagen 3 Fast	General Availability	2024-07-31	No earlier than 2025-07-31
+
+
+Supported languages
+Note: These languages are not the locations supported by the Vertex AI service and the models; these are the languages that the models can understand and (for Gemini) respond in (like the text input and output). If needed, learn more about supported locations.
+Gemini
+All the Gemini models can understand and respond in the following languages:
+
+Arabic (ar), Bengali (bn), Bulgarian (bg), Chinese simplified and traditional (zh), Croatian (hr), Czech (cs), Danish (da), Dutch (nl), English (en), Estonian (et), Finnish (fi), French (fr), German (de), Greek (el), Hebrew (iw), Hindi (hi), Hungarian (hu), Indonesian (id), Italian (it), Japanese (ja), Korean (ko), Latvian (lv), Lithuanian (lt), Norwegian (no), Polish (pl), Portuguese (pt), Romanian (ro), Russian (ru), Serbian (sr), Slovak (sk), Slovenian (sl), Spanish (es), Swahili (sw), Swedish (sv), Thai (th), Turkish (tr), Ukrainian (uk), Vietnamese (vi)
+
+Gemini 2.0 Flash, Gemini 1.5 Pro and Gemini 1.5 Flash models can understand and respond in the following additional languages:
+
+Afrikaans (af), Amharic (am), Assamese (as), Azerbaijani (az), Belarusian (be), Bosnian (bs), Catalan (ca), Cebuano (ceb), Corsican (co), Welsh (cy), Dhivehi (dv), Esperanto (eo), Basque (eu), Persian (fa), Filipino (Tagalog) (fil), Frisian (fy), Irish (ga), Scots Gaelic (gd), Galician (gl), Gujarati (gu), Hausa (ha), Hawaiian (haw), Hmong (hmn), Haitian Creole (ht), Armenian (hy), Igbo (ig), Icelandic (is), Javanese (jv), Georgian (ka), Kazakh (kk), Khmer (km), Kannada (kn), Krio (kri), Kurdish (ku), Kyrgyz (ky), Latin (la), Luxembourgish (lb), Lao (lo), Malagasy (mg), Maori (mi), Macedonian (mk), Malayalam (ml), Mongolian (mn), Meiteilon (Manipuri) (mni-Mtei), Marathi (mr), Malay (ms), Maltese (mt), Myanmar (Burmese) (my), Nepali (ne), Nyanja (Chichewa) (ny), Odia (Oriya) (or), Punjabi (pa), Pashto (ps), Sindhi (sd), Sinhala (Sinhalese) (si), Samoan (sm), Shona (sn), Somali (so), Albanian (sq), Sesotho (st), Sundanese (su), Tamil (ta), Telugu (te), Tajik (tg), Uyghur (ug), Urdu (ur), Uzbek (uz), Xhosa (xh), Yiddish (yi), Yoruba (yo), Zulu (zu)
+
+Imagen
+General availability: English
+
+Preview: Chinese (simplified), Chinese (traditional), Hindi, Japanese, Korean, Portuguese, Spanish
+
+
+
+Information about older models
+Vertex AI in Firebase supports all Gemini models, including older models like Gemini 1.5 models and Gemini 1.0 models.
+
+All Gemini 1.5 models and Gemini 1.0 models will be discontinued soon. Update to a newer model to avoid service disruption.
+When you start seriously developing your app, we recommend using Firebase Remote Config so that you can dynamically change the model and version in your app without releasing a new version of your app.
+
+Vertex AI in Firebase only supports Imagen 3 models. It does not support the older Imagen models (like Imagen 2).
+
+View supported input and output of older models
+
+Supported capabilities and features of older models
+
+Specifications and limitations of older models
+
+Available model names of older models (including discontinuation dates)
+Model names are the explicit values that you include in your code during initialization of the model.
+
+Gemini 1.5 Pro model names
+All Gemini 1.5 models are deprecated and will be discontinued soon. Update to a newer model to avoid service disruption.
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-1.5-pro-002	Latest stable version of Gemini 1.5 Pro	Deprecated	2024-09-24	2025-09-24
+gemini-1.5-pro-001	Initial stable version of Gemini 1.5 Pro	Deprecated	2024-05-24	2025-05-24
+Auto-updated stable alias
+gemini-1.5-pro	Points to the latest stable version of 1.5 Pro
+(currently gemini-1.5-pro-002)	Deprecated	2024-09-24	2025-09-24
+Gemini 1.5 Flash model names
+All Gemini 1.5 models are deprecated and will be discontinued soon. Update to a newer model to avoid service disruption.
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-1.5-flash-002	Latest stable version of Gemini 1.5 Flash	Deprecated	2024-09-24	2025-09-24
+gemini-1.5-flash-001	Initial stable version of Gemini 1.5 Flash	Deprecated	2024-05-24	2025-05-24
+Auto-updated stable alias
+gemini-1.5-flash	Points to the latest stable version of 1.5 Flash
+(currently gemini-1.5-flash-002)	Deprecated	2024-09-24	2025-09-24
+Gemini 1.0 Pro Vision model names
+All Gemini 1.0 models are deprecated and will be discontinued soon. Update to a newer model to avoid service disruption.
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-1.0-pro-vision-001	Latest stable version of Gemini 1.0 Pro Vision	Deprecated	2024-02-15	2025-04-21
+Auto-updated stable alias
+gemini-1.0-pro-vision	Points to the latest stable version of 1.5 Pro Vision
+(currently gemini-1.5-pro-vision-001)	Deprecated	2024-01-04	2025-04-21
+Gemini 1.0 Pro model names
+All Gemini 1.0 models are deprecated and will be discontinued soon. Update to a newer model to avoid service disruption.
+Model name	Description	Release stage	Initial release date	Discontinuation date
+Stable versions
+gemini-1.0-pro-002	Latest stable version of Gemini 1.0 Pro	Deprecated	2024-04-09	2025-04-21
+gemini-1.0-pro-001	Stable version of Gemini 1.0 Pro	Deprecated	2024-02-15	2025-04-21
+Auto-updated stable alias
+gemini-1.0-pro	Points to the latest stable version of 1.0 Pro
+(currently gemini-1.0-pro-002)	Deprecated	2024-02-15	2025-04-21
+
+
+Next steps
+
+Try out the capabilities of the Gemini API
+Build multi-turn conversations (chat).
+Generate text from text-only prompts.
+Generate text from multimodal prompts (including text, images, PDFs, video, and audio).
+Generate structured output (like JSON) from both text and multimodal prompts.
+Generate images from text prompts.
+Use function calling to connect generative models to external systems and information.

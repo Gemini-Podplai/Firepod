@@ -1,0 +1,59 @@
+.parameters-tab {
+  padding: 16px;
+}
+
+.parameters-description {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.parameter-container {
+  margin-bottom: 24px;
+}
+
+.parameter-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.parameter-title {
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.parameter-info-icon {
+  color: #1890ff;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.parameter-value {
+  margin-left: auto;
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.parameter-feedback {
+  margin-top: 4px;
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+}
+
+.parameters-reset {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.reset-button {
+  padding: 6px 16px;
+  background: #f0f0f0;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: #e6e6e6;
+}

@@ -1,0 +1,88 @@
+es of parameters 'data' and 'request' are incompatible.
+    Property 'prompt' is missing in type 'CallableRequest<any>' but required in type '{ prompt: string; modelName?: string | undefined; }'. 
+
+33   async (data: { prompt: string; modelName?: string }, context) => {
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/index.ts:33:18
+    33   async (data: { prompt: string; modelName?: string }, context) => {
+                        ~~~~~~
+    'prompt' is declared here.
+
+src/index.ts:35:19 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+35     if (!context?.auth) {
+                     ~~~~
+
+src/index.ts:67:25 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+67         userId: context.auth.uid,
+                           ~~~~
+
+src/index.ts:80:20 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+80       if (context?.auth) {
+                      ~~~~
+
+src/index.ts:82:27 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+82           userId: context.auth.uid,
+                             ~~~~
+
+src/index.ts:123:8 - error TS18048: 'context' is possibly 'undefined'.
+
+123   if (!context.auth) {
+           ~~~~~~~
+
+src/index.ts:123:16 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+123   if (!context.auth) {
+                   ~~~~
+
+src/index.ts:131:13 - error TS2339: Property 'messages' does not exist on type 'CallableRequest<any>'.
+
+131     const { messages } = data;
+                ~~~~~~~~
+
+src/index.ts:148:32 - error TS2339: Property 'generateChatResponse' does not exist on type 'GenerativeModel'.
+
+148     const result = await model.generateChatResponse(messages);
+                                   ~~~~~~~~~~~~~~~~~~~~
+
+src/index.ts:154:15 - error TS18048: 'context' is possibly 'undefined'.
+
+154       userId: context.auth.uid,
+                  ~~~~~~~
+
+src/index.ts:154:23 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+154       userId: context.auth.uid,
+                          ~~~~
+
+src/index.ts:166:9 - error TS18048: 'context' is possibly 'undefined'.
+
+166     if (context.auth) {
+            ~~~~~~~
+
+src/index.ts:166:17 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+166     if (context.auth) {
+                    ~~~~
+
+src/index.ts:168:17 - error TS18048: 'context' is possibly 'undefined'.
+
+168         userId: context.auth.uid,
+                    ~~~~~~~
+
+src/index.ts:168:25 - error TS2339: Property 'auth' does not exist on type 'CallableResponse<unknown>'.
+
+168         userId: context.auth.uid,
+                            ~~~~
+
+
+Found 22 errors in 2 files.
+
+Errors  Files
+     6  src/genkit-sample.ts:13
+    16  src/index.ts:12
+PS C:\Users\woody\podplai-studio\functions> 

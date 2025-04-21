@@ -1,0 +1,130 @@
+ {
+  "mcp_servers": [
+    {
+      "name": "gemini-api",
+      "type": "remote",
+      "url": "${GEMINI_API_ENDPOINT}",
+      "api_key": "${GEMINI_API_KEY}",
+      "schema": {
+        "generate_code": {
+          "input": { "prompt": "string", "language": "string" },
+          "output": { "code": "string" }
+        },
+        "generate_text": {
+          "input": { "prompt": "string" },
+          "output": { "text": "string" }
+        }
+      }
+    },
+    {
+      "name": "vertex-ai",
+      "type": "remote",
+      "url": "https://${GOOGLE_CLOUD_REGION}-aiplatform.googleapis.com",
+      "credentials": "${GOOGLE_APPLICATION_CREDENTIALS}",
+      "schema": {
+        "analyze_sentiment": {
+          "input": { "text": "string" },
+          "output": { "sentiment": "string" }
+        },
+        "claude_completion": {
+           "input": { "prompt": "string" },
+           "output": { "text": "string" }
+        }
+      }
+    },
+     {
+      "name": "anthropic",
+      "type": "remote",
+      "url": "${ANTHROPIC_API_ENDPOINT}",
+      "api_key": "${ANTHROPIC_API_KEY}",
+      "schema": {
+        "claude_completion": {
+          "input": { "prompt": "string" },
+          "output": { "text": "string" }
+        }
+      }
+    },
+    {
+      "name": "azure-openai",
+      "type": "remote",
+      "url": "${AZURE_OPENAI_ENDPOINT}",
+      "api_key": "${AZURE_OPENAI_API_KEY}",
+      "schema": {
+        "openai_completion": {
+          "input": { "prompt": "string" },
+          "output": { "text": "string" }
+        }
+      }
+    },
+    {
+      "name": "perplexity-api",
+      "type": "remote",
+      "url": "${PERPLEXITY_API_ENDPOINT}",
+      "api_key": "${PERPLEXITY_API_KEY}",
+      "schema": {
+        "search": {
+          "input": { "query": "string" },
+          "output": { "results": "array" }
+        }
+      }
+    },
+    {
+      "name": "brave-search",
+      "type": "remote",
+      "url": "https://api.search.brave.com/res/v1",
+      "api_key": "${BRAVESEARCH_API_KEY}",
+      "schema": {
+        "search": {
+          "input": { "query": "string" },
+          "output": { "results": "array" }
+        }
+      }
+    },
+    {
+      "name": "eden-ai",
+      "type": "remote",
+      "url": "https://api.edenai.run/v2/workflow/a162d772-e401-436e-929a-41fb8e29b353/execution/",
+      "api_key": "${EDEN_API_KEY}",
+      "schema": {
+        "launch_workflow_execution": {
+          "input": { "prompt": "string", "file": "string" },
+          "output": { "execution_result": "object" }
+        }
+      }
+    },
+    {
+      "name": "firebase",
+      "type": "local",
+      "path": "./.credentials/firestore-credentials.js",
+      "schema": {
+        "read_messages": {
+          "input": { "userId": "string" },
+          "output": { "messages": "array" }
+        },
+        "write_message": {
+          "input": { "userId": "string", "message": "string", "role": "string" },
+          "output": { "success": "boolean" }
+        },
+        "read_user_data": {
+           "input": { "userId": "string" },
+           "output": { "userData": "object" }
+        }
+      }
+    },
+    {
+      "name": "postgres",
+      "type": "local",
+      "connection": "${DATABASE_URL}",
+      "schema": {
+        "get_projects": {
+          "input": { "userId": "string" },
+          "output": { "projects": "array" }
+        },
+        "save_project": {
+           "input": { "userId": "string", "projectData": "object" },
+           "output": { "success": "boolean" }
+        }
+      }
+    }
+  ]
+}

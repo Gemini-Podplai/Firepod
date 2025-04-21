@@ -1,0 +1,91 @@
+:root {
+  /* Default light theme variables */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-sidebar: #f0f0f0;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-border: #e8e8e8;
+  --color-accent: #1890ff;
+  --color-card-bg: #ffffff;
+  --color-hover: #f9f9f9;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d9d9d9;
+  --color-button-bg: #f5f5f5;
+  --color-menu-hover: rgba(0, 0, 0, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.05);
+
+  /* Theme transition */
+  --transition-time: 0.3s;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --color-bg-primary: #1f1f1f;
+  --color-bg-secondary: #2c2c2c;
+  --color-bg-sidebar: #262626;
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #a0a0a0;
+  --color-border: #434343;
+  --color-accent: #1890ff;
+  --color-card-bg: #2c2c2c;
+  --color-hover: #363636;
+  --color-input-bg: #333333;
+  --color-input-border: #555555;
+  --color-button-bg: #333333;
+  --color-menu-hover: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-time), color var(--transition-time);
+}
+
+.ant-layout {
+  background-color: var(--color-bg-primary);
+  transition: background-color var(--transition-time);
+}
+
+.ant-layout-sider {
+  background-color: var(--color-bg-sidebar) !important;
+  border-right: 1px solid var(--color-border);
+  transition: background-color var(--transition-time), border-color var(--transition-time);
+}
+
+.ant-menu {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-right: none;
+}
+
+.ant-menu-item:hover {
+  background-color: var(--color-menu-hover);
+}
+
+.ant-card {
+  background-color: var(--color-card-bg);
+  border-color: var(--color-border);
+}
+
+.ant-input, .ant-select-selector {
+  background-color: var(--color-input-bg) !important;
+  border-color: var(--color-input-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.ant-divider {
+  border-color: var(--color-border);
+}
+
+.parameter-container, .sidebar-content {
+  color: var(--color-text-primary);
+}
+
+.parameters-description, .parameter-feedback {
+  color: var(--color-text-secondary);
+}
+
+/* Add more theme variable applications as needed */

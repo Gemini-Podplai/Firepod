@@ -1,0 +1,52 @@
+.resizable-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Height minus nav bar */
+  background-color: #1e1e1e; /* VS Code-like dark theme */
+  color: #d4d4d4;
+}
+
+.panel-group {
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.panel {
+  overflow: auto;
+  height: 100%;
+}
+
+.left-panel {
+  background-color: #252526; /* Slightly lighter than main bg */
+  padding: 16px;
+}
+
+.right-panel {
+  background-color: #1e1e1e;
+  padding: 0; /* No padding for editor to maximize space */
+}
+
+.resize-handle {
+  width: 4px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.resize-handle:hover {
+  background-color: #0078d4; /* Highlight color when hovering */
+}
+
+.handle-bar {
+  width: 2px;
+  height: 40px;
+  background-color: #555;
+  border-radius: 1px;
+}
+
+.resize-handle:hover .handle-bar {
+  background-color: #0078d4;
+}
