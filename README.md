@@ -45,178 +45,131 @@ GOOGLE_API_KEY=your_google_ai_key_here
 SESSION_SECRET=your_random_session_secret
 ```
 
+**IMPORTANT**: Ensure sensitive files like service account JSON keys are NOT committed to the repository. These should be handled securely, preferably via environment variables or a secure key management system. The `.gitignore` file has been updated to help prevent accidental commits of common sensitive file patterns.
+
 ### Installation
 
-1. Clone the repository
-2. Install dependencies (`npm install`)
-3. Set up the database (`npm run db:push`)
-4. If using Firebase:
-   - Create a Firestore database in Native mode:
-     ```bash
-     firebase firestore:databases:create --project=your-project-id
-     ```
-   - Make sure the database location matches your function location (e.g., europe-west1)
-   - In the functions directory, install necessary dependencies:
-     ```bash
-     cd functions
-     npm install @google/generative-ai firebase-admin firebase-functions
-     # Remove problematic dependency if you encounter errors
-     npm remove @genkit-ai/cli
-     ```
-5. Start the development server (`npm run dev`)
-6. Open your browser and navigate to `http://localhost:5000` for your application 
-   - Firebase Hosting emulator will also run on this port
-   - Access Firebase emulator UI at `http://localhost:4000` for monitoring
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Gemini-Podplai/Firepod.git
+    cd Firepod
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Set up the database:
+    ```bash
+    npm run db:push
+    ```
+4.  If using Firebase Functions:
+    *   Navigate to the functions directory: `cd functions`
+    *   Install necessary dependencies:
+        ```bash
+        npm install @google/generative-ai firebase-admin firebase-functions
+        ```
+    *   If you encounter issues with `@genkit-ai/cli`, you can safely remove it: `npm remove @genkit-ai/cli`
 
-### Troubleshooting
+### Running the Application
 
-#### Server Binding Error (ENOTSUP)
-If you encounter the `ENOTSUP` error when trying to run your server, which is a common issue on Windows with binding to IPv6 addresses, you can resolve it by modifying your `server.ts` file to bind to IPv4 instead. Replace the following line:
+Start the development server:
 
-```javascript
-server.listen(port, '::', () => {
-  console.log(`Server is running on port ${port}`);
-});
+```bash
+npm run dev
 ```
 
-with:
-
-```javascript
-server.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on port ${port}`);
-});
-```
-
-#### Package Installation Issues
-If you see errors like `404 Not Found` when installing packages:
-1. Ensure you have the latest npm: `npm install -g npm`
-2. Try installing packages individually instead of all at once
-3. For `@genkit-ai/cli` error, you can safely remove this dependency as it's not essential
+Open your browser and navigate to `http://localhost:5000` for your application. If using the Firebase emulator, the UI is typically accessible at `http://localhost:4000`.
 
 ## 📋 Usage Guide
 
 ### Chat Interface
 
-- Select an AI model from the dropdown
-- Adjust parameters like temperature and max tokens
-- Type your message and press Enter to send
-- View the AI's response in the chat window
+- Select an AI model from the dropdown.
+- Adjust parameters like temperature and max tokens.
+- Type your message and press Enter to send.
+- View the AI's response in the chat window.
 
 ### Code Generation
 
-- Describe the code you want to generate
-- Choose the programming language
-- Adjust parameters for different creativity levels
-- View and edit the generated code
+- Describe the code you want to generate.
+- Choose the programming language.
+- Adjust parameters for different creativity levels.
+- View and edit the generated code.
 
 ### Project Management
 
-- Save code snippets as projects
-- Organize projects into folders
-- Edit and update projects as needed
-- Share projects with others
+- Save code snippets as projects.
+- Organize projects into folders.
+- Edit and update projects as needed.
+- Share projects with others.
 
 ## 🏗️ Project Structure
 
 ```
-podplay-pen/
-├── client/               # Frontend code
-│   ├── src/
-│   │   ├── components/   # UI components
-│   │   ├── context/      # React context providers
-│   │   ├── hooks/        # Custom React hooks
-│   │   ├── lib/          # Utility functions
-│   │   ├── pages/        # Page components
-│   │   └── ...
-├── server/               # Backend code
-│   ├── auth.ts           # Authentication logic
-│   ├── db.ts             # Database connection
-│   ├── routes.ts         # API routes
-│   ├── storage.ts        # Data storage interface
-│   └── ...
-├── shared/               # Shared code
-│   └── schema.ts         # Database schema
-└── ...
+Firepod/
+├── client/               # Frontend code (React, TypeScript)
+│   ├── public/           # Static assets
+│   └── src/              # Source files
+│       ├── components/   # UI components
+│       ├── context/      # React context providers
+│       ├── hooks/        # Custom React hooks
+│       ├── lib/          # Utility functions and API integrations
+│       └── pages/        # Page components
+├── Functions/            # Firebase Cloud Functions
+│   └── src/              # Source files
+├── config/               # Configuration files
+├── migrations/           # Database migration scripts
+├── old-project/          # Older project files (can be reviewed/cleaned up)
+├── prisma/               # Prisma schema and migrations
+├── server/               # Backend code (Node.js, Express)
+│   ├── config/           # Server configuration
+│   ├── middleware/       # Express middleware
+│   ├── routes/           # API routes
+│   └── services/         # Backend services
+├── src/                  # Shared or root-level source files
+└── ...                   # Other project files (.gitignore, package.json, etc.)
 ```
 
 ## 🧠 AI Model Capabilities
 
 The sandbox integrates with Google's Gemini models, providing various capabilities:
 
-- **Gemini 2.5 Pro**: Advanced reasoning, complex instructions, multimodal capabilities
-- **Gemini 2.0 Flash**: Fast responses, good balance of speed and quality
-- **Gemini 1.5 Pro**: Strong general performance, good for code generation
-- **Gemini 1.5 Flash**: Optimized for quick responses and chat
+- **Gemini 2.5 Pro**: Advanced reasoning, complex instructions, multimodal capabilities.
+- **Gemini 2.0 Flash**: Fast responses, good balance of speed and quality.
+- **Gemini 1.5 Pro**: Strong general performance, good for code generation.
+- **Gemini 1.5 Flash**: Optimized for quick responses and chat.
+
+## ✨ Modernizing AI Integration
+
+This project uses the `@google/generative-ai` SDK. For the latest features and best practices with Gemini models, refer to the [Google Gemini Cookbook](https://github.com/google-gemini/cookbook). Consider exploring advanced techniques like Function Calling and Multimodal support based on your application's needs.
+
+## 🛡️ DevOps & Quality
+
+To enhance the project's robustness and maintainability:
+
+- **CI/CD:** Set up Continuous Integration/Continuous Deployment pipelines (e.g., using GitHub Actions) for automated linting, testing, and deployment.
+- **Testing:** Implement unit and integration tests for both frontend and backend logic, as well as AI interaction flows.
+- **Security:** Regularly review Firebase security rules and ensure all sensitive information is handled using environment variables or secure secrets management.
+
+## 🌱 Community & Growth
+
+We welcome contributions and feedback!
+
+- **Issues:** Report bugs or suggest features on the [GitHub Issues page](https://github.com/Gemini-Podplai/Firepod/issues).
+- **Discussions:** Share ideas and ask questions on the [GitHub Discussions page](https://github.com/Gemini-Podplai/Firepod/discussions).
+- **Contributing:** If you'd like to contribute code, please refer to the `CONTRIBUTING.md` file (to be added) for guidelines.
+- **Badges:** Consider adding build status, license, and test coverage badges to the README for better visibility.
+
+## ⚠️ Troubleshooting
+
+- **Server Binding Error (ENOTSUP):** If you encounter this error (common on Windows), modify your server file (e.g., `server/server.js` or `server/index.ts`) to bind to IPv4 (`'0.0.0.0'`) instead of IPv6 (`'::'`).
+- **Package Installation Issues:** Ensure you have the latest npm (`npm install -g npm`). Try installing packages individually if a bulk install fails.
+- **Git Secrets:** If you accidentally commit sensitive files, **do not** just delete them in a new commit. You must rewrite your Git history to remove them completely. Refer to online guides for using `git filter-repo` or `git filter-branch` for this purpose. We have attempted this process previously, and the `.gitignore` has been updated.
+
+## License
+
+This project is licensed under the MIT License.
 
 ---
 
 This project is for personal use and experimentation with AI technologies, specifically designed to support neurological needs through AI interactions.
-
-## Project Setup
-
-1. Install dependencies:
-   ```
-   npm install
-   ```
-
-2. Configure environment variables:
-   - Copy `.env.example` to `.env`
-   - Fill in your own credentials
-
-3. **IMPORTANT**: Service Account Setup
-   - Download your Google Cloud service account JSON file
-   - Rename it to `service-account.json`
-   - Place it in the project root directory
-   - **DO NOT COMMIT THIS FILE** (it's already in `.gitignore`)
-
-4. Start the development server:
-   ```
-   npm run dev
-   ```
-
-## Database Setup
-
-The application uses PostgreSQL for data storage. Database migrations are automatically run when needed.
-
-### Configuration
-
-1. Create a `.env` file based on `.env.example` and configure your database connection:
-
-```
-DB_USER=postgres
-DB_HOST=localhost
-DB_NAME=podplai
-DB_PASSWORD=yourpassword
-DB_PORT=5432
-```
-
-### Database Commands
-
-- `npm run db:push` - Run database migrations manually
-- `npm run db:check` - Check if required database tables exist
-
-The database will be automatically configured when you run the application with `npm start`.
-
-### Creating Migrations
-
-To add new database structures:
-
-1. Create a new SQL file in the `migrations/` directory
-2. Name it with a sequential number prefix (e.g., `002-add-settings-table.sql`)
-3. Write your SQL migration code
-4. Run `npm run db:push` to apply the migration
-
-## Troubleshooting
-
-If you're having issues with Git because you accidentally committed credentials:
-
-1. Read the `CREDENTIALS_GUIDE.md` file
-2. Run one of the scripts in the `scripts` directory to clean your Git history
-
-## Project Structure
-
-- `/public` - Static assets
-- `/src` - Source code
-- `/routes` - API routes
-- `/config` - Configuration files
-- `/utils` - Utility functions

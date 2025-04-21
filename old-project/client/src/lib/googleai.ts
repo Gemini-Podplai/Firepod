@@ -61,44 +61,6 @@ export const AI_MODELS = {
       contextWindow: "1,048,576 tokens",
       bestFor: "Reasoning tasks, explaining thought process, educational use cases"
     },
-    // Legacy Gemini 1.5 Models - will be discontinued soon
-    {
-      id: "gemini-1.5-flash",
-      name: "Gemini 1.5 Flash (Legacy)",
-      provider: "Google",
-      icon: "google",
-      description: "Legacy model - will be discontinued soon. Update to Gemini 2.0 models.",
-      contextWindow: "1 million tokens",
-      bestFor: "Legacy applications only"
-    },
-    {
-      id: "gemini-1.5-pro",
-      name: "Gemini 1.5 Pro (Legacy)",
-      provider: "Google",
-      icon: "google",
-      description: "Legacy model - will be discontinued soon. Update to Gemini 2.0 models.",
-      contextWindow: "1 million tokens",
-      bestFor: "Legacy applications only"
-    },
-    // Legacy Gemini 1.0 Models - will be discontinued soon
-    {
-      id: "gemini-pro",
-      name: "Gemini Pro (Legacy)",
-      provider: "Google",
-      icon: "google",
-      description: "Legacy model - will be discontinued soon. Update to Gemini 2.0 models.",
-      contextWindow: "32,000 tokens",
-      bestFor: "Legacy applications only"
-    },
-    {
-      id: "gemini-pro-vision",
-      name: "Gemini Pro Vision (Legacy)",
-      provider: "Google",
-      icon: "google",
-      description: "Legacy model - will be discontinued soon. Update to Gemini 2.0 models.",
-      contextWindow: "32,000 tokens",
-      bestFor: "Legacy applications only"
-    },
   ],
 };
 
